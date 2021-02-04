@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ResetBtn from "./ResetBtn";
 
 const App = () => {
   const questions = [
@@ -64,49 +65,71 @@ const App = () => {
 
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
-      setScore(score+1);
+      setScore(score + 1);
     }
 
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
-    }
-    else{
+    } else {
       setShowScore(true);
     }
+  };
 
-  }
-
-  return(
-    <div className="app">
+  return (
+    <>
       {showScore ? (
-        <>
-        <div className="score-section"> You scored {score} out of {questions.length}
-        </div>
-        <hr/>
-        <div className="result-section">
-          {score === questions.length ? (<p>Excellent!!You got full points.</p>) : <p>Try hard next time!</p> }
-        </div>
-        </>
+        <h2 className="quiz-heading">Your Quiz Result</h2>
       ) : (
-        <>
-        <div className="question-section">
-          <div className="question-count">
-            <span>Question {currentQuestion + 1}</span>/{questions.length}
-          </div>
-          <div className="question-text">
-            {questions[currentQuestion].questionText}
-          </div>
-          <div className="answer-section">
-            {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button onClick={()=>handleAnswerOptionClick(answerOption.isCorrect)} >{answerOption.answerText}</button>
-            ))}
-          </div>
-        </div>
-        </>
+        <h2 className="quiz-heading">Let's Play Quiz</h2>
       )}
-    </div>
-  )
-}
+      <div className="app">
+        {showScore ? (
+          <>
+            <div className="score-section">
+              You scored {score} out of {questions.length}
+            </div>
+            <hr />
+            <div className="result-section">
+              {score === questions.length ? (
+                <p style={{ color: "yellow" }}>
+                  Excellent!! You got full points.
+                </p>
+              ) : (
+                <p style={{ color: "crimson" }}>Try harder next time!</p>
+              )}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="question-section">
+              <div className="question-count">
+                <span>Question {currentQuestion + 1}</span>/{questions.length}
+              </div>
+              <div className="question-text">
+                {questions[currentQuestion].questionText}
+              </div>
+              <div className="answer-section">
+                {questions[currentQuestion].answerOptions.map(
+                  (answerOption) => (
+                    <button
+                      className="answer-btn"
+                      onClick={() =>
+                        handleAnswerOptionClick(answerOption.isCorrect)
+                      }
+                    >
+                      {answerOption.answerText}
+                    </button>
+                  )
+                )}
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+      {showScore ? <ResetBtn /> : ""}
+    </>
+  );
+};
 
 export default App;

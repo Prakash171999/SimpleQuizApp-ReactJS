@@ -2,7 +2,7 @@ $colorWhite: #ffffff;
 $darkShadeBlue: #252d4a;
 $darkShadeCyanBlue: #234668;
 $shadeOfBlue: #555e7d;
-$lightShadeCyanBlue:#7cc6fe; 
+$lightShadeCyanBlue: #7cc6fe;
 
 * {
   font-family: "Verdana", cursive, sans-serif;
@@ -21,6 +21,11 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.quiz-heading {
+  font-size: 35px;
+  text-align: center;
 }
 
 .app {
@@ -65,9 +70,6 @@ body {
 .result-section {
   @include common-attribute;
   margin-right: 35px;
-  p {
-    color: yellow;
-  }
 }
 
 /* ANSWERS SECTION */
@@ -78,22 +80,42 @@ body {
   justify-content: space-between;
 }
 
-button {
+@mixin appBtn {
+  background-color: $darkShadeBlue;
+  color: $colorWhite;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.answer-btn {
+  @include appBtn();
   width: 100%;
   font-size: 16px;
-  color: $colorWhite;
-  background-color: $darkShadeBlue;
-  border-radius: 15px;
   display: flex;
-  padding: 5px;
   justify-content: flex-start;
-  align-items: center;
   border: 5px solid $darkShadeCyanBlue;
-  cursor: pointer;
   &:hover {
     background-color: $shadeOfBlue;
   }
   &:focus {
     outline: none;
+  }
+}
+
+.reset-btn {
+  @include appBtn();
+  width: 15%;
+  height: 7vh;
+  float: right;
+  margin-top: 2%;
+  font-size: 20px;
+  justify-content: center;
+  border: none;
+  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+
+  &:hover {
+    background-color: rgb(124, 15, 29);
   }
 }
