@@ -21,8 +21,8 @@ body {
 
 .app {
   background-color: #252d4a;
-  width: 450px;
-  min-height: 200px;
+  width: 580px;
+  min-height: 250px;
   height: min-content;
   border-radius: 15px;
   padding: 20px;
@@ -33,11 +33,22 @@ body {
 
 .score-section {
   display: flex;
-  font-size: 24px;
+  font-size: 20px;
   align-items: center;
 }
 
-/* QUESTION/TIMER/LEFT SECTION */
+.result-section {
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  margin-right: 35px;
+}
+
+.result-section p{
+  color: yellow;
+}
+
+/* QUESTION SECTION */
 .question-section {
   width: 100%;
   position: relative;
@@ -55,17 +66,7 @@ body {
   margin-bottom: 12px;
 }
 
-.timer-text {
-  background: rgb(230, 153, 12);
-  padding: 15px;
-  margin-top: 20px;
-  margin-right: 20px;
-  border: 5px solid rgb(255, 189, 67);
-  border-radius: 15px;
-  text-align: center;
-}
-
-/* ANSWERS/RIGHT SECTION */
+/* ANSWERS SECTION */
 .answer-section {
   width: 100%;
   display: flex;
@@ -87,13 +88,6 @@ button {
   cursor: pointer;
 }
 
-.correct {
-  background-color: #2f922f;
-}
-
-.incorrect {
-  background-color: #ff3333;
-}
 
 button:hover {
   background-color: #555e7d;
@@ -101,8 +95,4 @@ button:hover {
 
 button:focus {
   outline: none;
-}
-
-button svg {
-  margin-right: 5px;
 }

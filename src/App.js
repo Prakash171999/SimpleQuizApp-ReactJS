@@ -38,6 +38,24 @@ const App = () => {
         { answerText: "7", isCorrect: true },
       ],
     },
+    {
+      questionText: "Who is the richest person in the world in 2021?",
+      answerOptions: [
+        { answerText: "Jeff Bezos", isCorrect: false },
+        { answerText: "Mukesh Ambani", isCorrect: false },
+        { answerText: "Elon Musk", isCorrect: true },
+        { answerText: "Bill Gates", isCorrect: false },
+      ],
+    },
+    {
+      questionText: "How many days are there in a year?",
+      answerOptions: [
+        { answerText: "500", isCorrect: false },
+        { answerText: "355", isCorrect: false },
+        { answerText: "380", isCorrect: false },
+        { answerText: "365", isCorrect: true },
+      ],
+    },
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -62,7 +80,14 @@ const App = () => {
   return(
     <div className="app">
       {showScore ? (
-        <div className="score-section"> You scored {score} out of {questions.length}</div>
+        <>
+        <div className="score-section"> You scored {score} out of {questions.length}
+        </div>
+        <hr/>
+        <div className="result-section">
+          {score === questions.length ? (<p>Excellent!!You got full points.</p>) : <p>Try hard next time!</p> }
+        </div>
+        </>
       ) : (
         <>
         <div className="question-section">
